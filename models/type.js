@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const TypeSchema = new Schema({
     name: String,
     description: String,
-    ImgUrl: String
+    imgUrl: String
 })
 
 const TypeCollection = mongoose.model("type", TypeSchema)
