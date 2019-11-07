@@ -23,7 +23,7 @@ brandRouter.put('/:brandId', async (req, res) => {
     res.json(updatedBrand)
 })
 
-brandRouter.get('/:brandId', async (req, res) => {
+brandRouter.delete('/:brandId', async (req, res) => {
     const deletedBrand = await brandApi.deleteBrand(req.params.brandId)
     res.json(deletedBrand)
 })
