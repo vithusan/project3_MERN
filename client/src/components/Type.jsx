@@ -51,14 +51,16 @@ class Type extends Component {
 
         return (
             <div>
-                {this.state.typeList.map((type, index) => {
-                    return (
-                        <div>
-                            <Link to={`/type/${type._id}`}>{type.name}</Link>
-                            <button onClick={() => this.deleteType(type._id)}>Delete</button>
-                        </div>
-                    )
-                })}
+                <div>
+                    {this.state.typeList.map((type) => {
+                        return (
+                            <div>
+                                <Link to={`/type/${type._id}`}>{type.name}</Link>
+                                <button onClick={() => this.deleteType(type._id)}>Delete</button>
+                            </div>
+                        )
+                    })}
+                </div>
                 <form onSubmit={() => this.createNewType()}>
                     <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.type.name} />
                     <input type="text" name="description" placeholder="description" onChange={this.handleChange} value={this.state.type.description} />
