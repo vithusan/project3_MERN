@@ -8,6 +8,11 @@ brandRouter.get('/', async (req, res) => {
     res.json(allBrand)
 })
 
+brandRouter.get('/type/:typeId', async (req, res) => {
+    const allBrandByType = await brandApi.getAllBrandByType({ typeId: req.params.typeId })
+    res.json(allBrandByType)
+})
+
 brandRouter.get('/:brandId', async (req, res) => {
     const singleBrand = await brandApi.getSingleBrand(req.params.brandId)
     res.json(singleBrand)
