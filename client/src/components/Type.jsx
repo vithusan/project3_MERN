@@ -66,8 +66,8 @@ class Type extends Component {
                     <input type="text" name="description" placeholder="description" onChange={this.handleChange} value={this.state.type.description} />
                     <input type="text" name="imgUrl" placeholder="ImgUrl" onChange={this.handleChange} value={this.state.type.imgUrl} />
                     <button type="submit" >Create</button>
-
                 </form>
+
             </div>
         );
     }

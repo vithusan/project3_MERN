@@ -4,13 +4,18 @@ const Schema = mongoose.Schema
 const BrandSchema = new Schema({
     name: String,
     description: String,
-    imgUrl: String
+    imgUrl: String,
+    typeId: mongoose.Types.ObjectId
 })
 
 const BrandCollection = mongoose.model('brand', BrandSchema)
 
 const getAllBrand = () => {
     return BrandCollection.find({})
+}
+
+const getAllBrandByType = (typeId) => {
+    return BrandCollection.findById({ typeId: typeId })
 }
 
 const getSingleBrand = (brandId) => {
@@ -31,6 +36,7 @@ const deleteBrand = (brandId) => {
 
 module.exports = {
     getAllBrand,
+    getAllBrandByType,
     getSingleBrand,
     createBrand,
     updateBrand,
