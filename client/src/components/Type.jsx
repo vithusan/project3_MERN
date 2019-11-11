@@ -12,7 +12,8 @@ class Type extends Component {
             description: '',
             imgUrl: ''
         },
-        typeList: []
+        typeList: [],
+        updateForm: false
     }
 
     componentDidMount = () => {
@@ -40,11 +41,33 @@ class Type extends Component {
         this.setState({ type: prevState })
     }
 
+    updateHandle = (event) => {
+        event.preventDefault()
+        const prevState = { ...this.state.type }
+        prevState[event.target.name] = event.target.value
+        this.setState({ type: prevState })
+    }
+
     deleteType = async (typeId) => {
         await axios.delete(`/api/type/${typeId}`)
         await this.refreshPage()
     }
 
+    toggleUpdateForm = () => {
+        this.setState({ updateForm: !this.state.updateForm })
+    }
+
+    updateType = (typeId) => {
+        // event.preventDefault()
+        axios.put(`/api/type/${typeId}`, {
+            name: this.state.type.name,
+            descript: this.state.type.description,
+            imgUrl: this.state.type.imgUrl
+        })
+            .then((res) => {
+                this.setState({ type: res.data, updateForm: false })
+            })
+    }
 
 
     render() {
@@ -57,17 +80,30 @@ class Type extends Component {
                             <div key={type._id}>
                                 <Link to={`/type/${type._id}`}>{type.name}</Link>
                                 <button onClick={() => this.deleteType(type._id)}>Delete</button>
+                                <div>
+                                    {this.state.updateForm ?
+                                        <form onSubmit={() => this.updateType(type._id)}>
+                                            <input type="text" name="name" placeholder="name" onChange={this.updateHandle} value={type.name} />
+                                            <input type="text" name="description" placeholder="description" onChange={this.updateHandle} value={type.description} />
+                                            <input type="text" name="imgUrl" placeholder="ImgUrl" onChange={this.updateHandle} value={type.imgUrl} />
+                                            <button type="submit" >Update</button>
+                                        </form>
+                                        :
+                                        null
+                                    }
+                                </div>
+
                             </div>
                         )
                     })}
                 </div>
+                <button onClick={this.toggleUpdateForm}>Edit</button>
                 <form onSubmit={() => this.createNewType()}>
                     <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.type.name} />
                     <input type="text" name="description" placeholder="description" onChange={this.handleChange} value={this.state.type.description} />
                     <input type="text" name="imgUrl" placeholder="ImgUrl" onChange={this.handleChange} value={this.state.type.imgUrl} />
                     <button type="submit" >Create</button>
                 </form>
-
             </div>
         );
     }

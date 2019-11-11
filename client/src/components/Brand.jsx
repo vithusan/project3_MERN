@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Brand extends Component {
 
@@ -7,7 +8,8 @@ class Brand extends Component {
         brand: {
             name: '',
             description: '',
-            imgUrl: ''
+            imgUrl: '',
+            typeId: this.props.match.params.typeId
         },
         brandList: []
     }
@@ -17,8 +19,18 @@ class Brand extends Component {
     }
 
     refreshPage = async () => {
-        const getAllBrand = await axios.get(`/api/brand/type/${this.props.match.params.typeId}`)
-        await this.setState({ brandList: getAllBrand.data })
+        console.log('We Here')
+        console.log(this.props.match.params.typeId)
+
+        // const getAllBrand = await axios.get(`/api/type/${this.props.match.params.typeId}`)
+        axios.get(`/api/type/new/${this.props.match.params.typeId}`)
+            .then((res) => {
+                console.log(res.data)
+                this.setState({ brandList: res.data })
+            })
+        // console.log(getAllBrand.data.allBrandByType)
+        // await this.setState({ brandList: getAllBrand.data.allBrandByType })
+
     }
 
     // refreshPage = async () => {
@@ -33,7 +45,8 @@ class Brand extends Component {
         const newBrand = {
             name: this.state.brand.name,
             description: this.state.brand.description,
-            imgUrl: this.state.brand.imgUrl
+            imgUrl: this.state.brand.imgUrl,
+            typeId: this.state.brand.typeId
         }
         await axios.post('/api/brand', newBrand)
         await this.refreshPage()
@@ -52,7 +65,17 @@ class Brand extends Component {
         await this.refreshPage()
     }
 
-
+    updateType = (typeId) => {
+        // event.preventDefault()
+        axios.put(`/api/type/${typeId}`, {
+            name: this.state.type.name,
+            descript: this.state.type.description,
+            imgUrl: this.state.type.imgUrl
+        })
+            .then((res) => {
+                this.setState({ type: res.data, updateForm: false })
+            })
+    }
 
     render() {
         return (
@@ -70,10 +93,11 @@ class Brand extends Component {
                     <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.brand.name} />
                     <input type="text" name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description} />
                     <input type="text" name="imgUrl" placeholder="imgUrl" onChange={this.handleChange} value={this.state.brand.imgUrl} />
-                    <input type="text" name="typeId" value={this.props.match.params.typeId} />
+                    {/* <input type="text" name="typeId" value={this.props.match.params.typeId} /> */}
                     <button type="submit">Create</button>
                 </form>
 
+                <Link to='/'>Back</Link>
             </div>
         );
     }

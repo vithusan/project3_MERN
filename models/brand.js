@@ -15,7 +15,7 @@ const getAllBrand = () => {
 }
 
 const getAllBrandByType = (typeId) => {
-    return BrandCollection.findById({ typeId })
+    return BrandCollection.find({ typeId: typeId })
 }
 
 const getSingleBrand = (brandId) => {
