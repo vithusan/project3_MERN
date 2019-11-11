@@ -54,7 +54,7 @@ class Type extends Component {
                 <div>
                     {this.state.typeList.map((type) => {
                         return (
-                            <div>
+                            <div key={type._id}>
                                 <Link to={`/type/${type._id}`}>{type.name}</Link>
                                 <button onClick={() => this.deleteType(type._id)}>Delete</button>
                             </div>

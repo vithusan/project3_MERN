@@ -1,7 +1,13 @@
 const express = require('express')
 const typeApi = require('../models/type.js')
+const brandApi = require('../models/brand.js')
 
 const typeRouter = express.Router()
+
+// typeRouter.get('/:typeId', async (req, res) => {
+//     const allBrandByType = await brandApi.getAllBrandByType(req.params.typeId)
+//     res.json(allBrandByType)
+// })
 
 typeRouter.get('/', async (req, res) => {
     const allType = await typeApi.getAllType()
@@ -12,6 +18,8 @@ typeRouter.get('/:typeId', async (req, res) => {
     const singleType = await typeApi.getSingleType(req.params.typeId)
     res.json(singleType)
 })
+
+
 
 typeRouter.post('/', async (req, res) => {
     const newType = await typeApi.createType(req.body)

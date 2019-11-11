@@ -17,9 +17,17 @@ class Brand extends Component {
     }
 
     refreshPage = async () => {
-        const getAllBrand = await axios.get('/api/brand')
+        const getAllBrand = await axios.get(`/api/brand/type/${this.props.match.params.typeId}`)
         await this.setState({ brandList: getAllBrand.data })
     }
+
+    // refreshPage = async () => {
+    //     const getAllBrandByType = await axios.get(`/api/brand/type/${this.props.match.params.typeId}`)
+    //     const prevState = { ...this.state.brandList }
+    //     const newState = Object.assign([], prevState, getAllBrandByType.data)
+
+    //     await this.setState(newState)
+    // }
 
     createNewBrand = async () => {
         const newBrand = {
@@ -49,9 +57,9 @@ class Brand extends Component {
     render() {
         return (
             <div>
-                {this.state.brandList.map((brand, index) => {
+                {this.state.brandList.map((brand) => {
                     return (
-                        <div>
+                        <div key={brand._id}>
                             <h1>{brand.name}</h1>
                             <button onClick={() => this.deleteBrand(brand._id)}>Delete</button>
                         </div>
@@ -62,6 +70,7 @@ class Brand extends Component {
                     <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.brand.name} />
                     <input type="text" name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description} />
                     <input type="text" name="imgUrl" placeholder="imgUrl" onChange={this.handleChange} value={this.state.brand.imgUrl} />
+                    <input type="text" name="typeId" value={this.props.match.params.typeId} />
                     <button type="submit">Create</button>
                 </form>
 

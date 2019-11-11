@@ -5,7 +5,7 @@ const BrandSchema = new Schema({
     name: String,
     description: String,
     imgUrl: String,
-    typeId: mongoose.Types.ObjectId
+    typeId: String
 })
 
 const BrandCollection = mongoose.model('brand', BrandSchema)
@@ -15,7 +15,7 @@ const getAllBrand = () => {
 }
 
 const getAllBrandByType = (typeId) => {
-    return BrandCollection.findById({ typeId: typeId })
+    return BrandCollection.findById({ typeId })
 }
 
 const getSingleBrand = (brandId) => {
