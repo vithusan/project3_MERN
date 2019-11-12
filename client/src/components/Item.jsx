@@ -51,6 +51,7 @@ class Item extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <div>
@@ -75,7 +76,7 @@ class Item extends Component {
                         <input type="submit" value="Create" />
                     </form>
                 </div>
-                <Link to={`/type/${this.props.match.params.typeId}`}>Back</Link>
+                <Link to={`/type`} className="linkBtn">Back</Link>
             </div>
         );
     }

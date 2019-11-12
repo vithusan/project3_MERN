@@ -65,7 +65,8 @@ class Brand extends Component {
                 {this.state.brandList.map((brand) => {
                     return (
                         <div key={brand._id}>
-                            <Link to={`/brand/${brand._id}`}>{brand.name}</Link>
+                            <Link to={`/brand/${brand._id}`} className="linkBtn">{brand.name}</Link>
+                            <img src={brand.imgUrl} alt="type of drones" />
                             <button onClick={() => this.deleteBrand(brand._id)}>Delete</button>
                         </div>
                     )
@@ -73,13 +74,14 @@ class Brand extends Component {
                 {/* why does the input need values  */}
                 <form onSubmit={() => this.createNewBrand()}>
                     <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.brand.name} />
-                    <input type="text" name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description} />
                     <input type="text" name="imgUrl" placeholder="imgUrl" onChange={this.handleChange} value={this.state.brand.imgUrl} />
+                    {/* <input type="textarea" name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description} /> */}
+                    <textarea name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description}></textarea>
                     {/* <input type="text" name="typeId" value={this.props.match.params.typeId} /> */}
                     <button type="submit">Create</button>
                 </form>
 
-                <Link to='/'>Back</Link>
+                <Link to='/type' className="linkBtn">Back</Link>
             </div>
         );
     }
