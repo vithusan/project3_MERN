@@ -19,27 +19,9 @@ class Brand extends Component {
     }
 
     refreshPage = async () => {
-        console.log('We Here')
-        console.log(this.props.match.params.typeId)
-
-        // const getAllBrand = await axios.get(`/api/type/${this.props.match.params.typeId}`)
-        axios.get(`/api/type/new/${this.props.match.params.typeId}`)
-            .then((res) => {
-                console.log(res.data)
-                this.setState({ brandList: res.data })
-            })
-        // console.log(getAllBrand.data.allBrandByType)
-        // await this.setState({ brandList: getAllBrand.data.allBrandByType })
-
+        const getAllBrand = await axios.get(`/api/brand/type/${this.props.match.params.typeId}`)
+        this.setState({ brandList: getAllBrand.data })
     }
-
-    // refreshPage = async () => {
-    //     const getAllBrandByType = await axios.get(`/api/brand/type/${this.props.match.params.typeId}`)
-    //     const prevState = { ...this.state.brandList }
-    //     const newState = Object.assign([], prevState, getAllBrandByType.data)
-
-    //     await this.setState(newState)
-    // }
 
     createNewBrand = async () => {
         const newBrand = {
@@ -83,7 +65,7 @@ class Brand extends Component {
                 {this.state.brandList.map((brand) => {
                     return (
                         <div key={brand._id}>
-                            <h1>{brand.name}</h1>
+                            <Link to={`/brand/${brand._id}`}>{brand.name}</Link>
                             <button onClick={() => this.deleteBrand(brand._id)}>Delete</button>
                         </div>
                     )
@@ -102,6 +84,4 @@ class Brand extends Component {
         );
     }
 }
-
-
 export default Brand;

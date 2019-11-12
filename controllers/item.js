@@ -3,6 +3,11 @@ const itemApi = require('../models/item.js')
 
 const itemRouter = express.Router()
 
+itemRouter.get('/brand/:brandId', async (req, res) => {
+    const getAllItemByBrand = await itemApi.getItemByBrand(req.params.brandId)
+    res.json(getAllItemByBrand)
+})
+
 itemRouter.get('/', async (req, res) => {
     const allItem = await itemApi.getAllItem()
     res.json(allItem)

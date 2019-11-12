@@ -3,10 +3,11 @@ const brandApi = require('../models/brand.js')
 
 const brandRouter = express.Router()
 
-// brandRouter.get('/type/:typeId', async (req, res) => {
-//     const allBrandByType = await brandApi.getAllBrandByType(req.params.typeId)
-//     res.json(allBrandByType)
-// })
+brandRouter.get('/type/:typeId', async (req, res) => {
+    const allBrandByType = await brandApi.getAllBrandByType(req.params.typeId)
+    res.json(allBrandByType)
+})
+
 
 brandRouter.get('/', async (req, res) => {
     const allBrand = await brandApi.getAllBrand()

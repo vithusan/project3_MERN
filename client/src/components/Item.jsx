@@ -12,20 +12,30 @@ class Item extends Component {
     }
 
     refreshPage = async () => {
-        const getAllItem = await axios.get('/api/item')
+        const getAllItem = await axios.get(`/api/item/brand/${this.props.match.params.brandId}`)
         this.setState({ itemList: getAllItem.data })
     }
     render() {
         return (
             <div>
-                {this.state.itemList.map((item) => {
-                    return (
-                        <div>
-                            <h1>{item.name}</h1>
-                            <h2>{item.description}</h2>
-                        </div>
-                    )
-                })}
+                <div>
+
+                    {this.state.itemList.map((item) => {
+                        return (
+                            <div key={item._id}>
+                                <h1>testing item page</h1>
+                                <h1>{item.name}</h1>
+                                <h2>{item.description}</h2>
+                            </div>
+                        )
+                    })}
+
+                </div>
+                <div>
+                    <form>
+
+                    </form>
+                </div>
             </div>
         );
     }

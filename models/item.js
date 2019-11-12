@@ -6,13 +6,18 @@ const ItemSchema = new Schema({
     description: String,
     price: String,
     imgUrl: String,
-    buyLink: String
+    buyLink: String,
+    brandId: String
 })
 
 const ItemCollection = mongoose.model('item', ItemSchema)
 
 const getAllItem = () => {
     return ItemCollection.find({})
+}
+
+const getItemByBrand = (brandId) => {
+    return ItemCollection.find({ brandId })
 }
 
 const getSingleItem = (itemId) => {
@@ -33,6 +38,7 @@ const deleteItem = (itemId) => {
 
 module.exports = {
     getAllItem,
+    getItemByBrand,
     getSingleItem,
     createItem,
     updateItem,
