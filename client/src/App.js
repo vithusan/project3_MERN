@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './components/Home.jsx'
 import Type from './components/Type.jsx'
 import Brand from './components/Brand.jsx'
 import Item from './components/Item.jsx'
@@ -10,7 +11,8 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Type} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/type" component={Type} />
           <Route exact path="/type/:typeId" component={Brand} />
           <Route exact path="/brand/:brandId" component={Item} />
         </Switch>

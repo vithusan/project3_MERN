@@ -1,7 +1,8 @@
 const mongoose = require('./connection.js')
-const Schema = mongoose.Schema
+// const Schema = mongoose.Schema
+global.sampleModel = []
 
-const BrandSchema = new Schema({
+const BrandSchema = new mongoose.Schema({
     name: String,
     description: String,
     imgUrl: String,
