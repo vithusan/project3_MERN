@@ -13,7 +13,8 @@ class Item extends Component {
             buyLink: '',
             brandId: this.props.match.params.brandId
         },
-        itemList: []
+        itemList: [],
+        createForm: false
     }
 
     componentDidMount = () => {
@@ -50,33 +51,36 @@ class Item extends Component {
         await this.refreshPage()
     }
 
+    toggleCreateForm = () => {
+        this.setState({ createForm: !this.state.createForm })
+    }
     render() {
 
         return (
-            <div>
-                <div>
-
-                    {this.state.itemList.map((item) => {
-                        return (
-                            <div key={item._id}>
-                                <h1>{item.name}</h1>
-                                <button onClick={() => this.deleteItem(item._id)}>Delete</button>
-                            </div>
-                        )
-                    })}
-
-                </div>
-                <div>
-                    <form onSubmit={() => this.createNewItem()}>
-                        <input type="text" name="name" placeholder="Name" onChange={this.handleChange} value={this.state.item.name} />
-                        <input type="text" name="description" placeholder="Description" onChange={this.handleChange} value={this.state.item.description} />
-                        <input type="text" name="price" placeholder="Price" onChange={this.handleChange} value={this.state.item.price} />
-                        <input type="text" name="imgUrl" placeholder="Img Url" onChange={this.handleChange} value={this.state.item.imgUrl} />
-                        <input type="text" name="buyLink" placeholder="Product Link" onChange={this.handleChange} value={this.state.item.buyLink} />
-                        <input type="submit" value="Create" />
-                    </form>
-                </div>
-                <Link to={`/type`} className="linkBtn">Back</Link>
+            <div className="mainContainer">
+                <Link to={`/type`} className="linkBtn2">Back</Link>
+                {this.state.itemList.map((item) => {
+                    return (
+                        <div key={item._id} className="typeData">
+                            <p className="typeName">{item.name}</p>
+                            <button onClick={() => this.deleteItem(item._id)} className="linkBtn">Delete</button>
+                        </div>
+                    )
+                })}
+                <button onClick={this.toggleCreateForm} className="createBtn">{this.state.createForm ? "-" : "+"}</button>
+                {this.state.createForm ?
+                    <div>
+                        <form onSubmit={() => this.createNewItem()}>
+                            <input type="text" name="name" placeholder="Name" onChange={this.handleChange} value={this.state.item.name} />
+                            <input type="text" name="description" placeholder="Description" onChange={this.handleChange} value={this.state.item.description} />
+                            <input type="text" name="price" placeholder="Price" onChange={this.handleChange} value={this.state.item.price} />
+                            <input type="text" name="imgUrl" placeholder="Img Url" onChange={this.handleChange} value={this.state.item.imgUrl} />
+                            <input type="text" name="buyLink" placeholder="Product Link" onChange={this.handleChange} value={this.state.item.buyLink} />
+                            <button type="submit" className="linkBtn2">Create</button>
+                        </form>
+                    </div>
+                    :
+                    null}
             </div>
         );
     }

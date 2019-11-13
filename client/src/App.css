@@ -25,6 +25,7 @@
   text-decoration: none;
   color: #fff;
   font-size: 17px;
+  border: none;
 }
 
 .linkBtn:hover{
@@ -52,7 +53,7 @@ h1{
 }
 form{
   margin-top: 25px;
-  height: 150px;
+  height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,7 +63,8 @@ input, textarea{
   padding: 5px;
   border: none;
   border-bottom: 1px solid #9E2A2B;
-  font-size: 24px;
+  font-size: 20px;
+  width: 300px;
 }
 
 .adminBtn{
@@ -145,4 +147,51 @@ input, textarea{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-decoration: none;
   color: rgb(87, 87, 87);
+}
+.mainContainer{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.typeData{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.typeName{
+  text-decoration: none;
+  color: rgb(58, 57, 57);
+}
+
+.typeName:hover{
+  color: rgb(86, 158, 179);
+}
+
+.createBtn{
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  background: #335C67;
+  color: #fff;
+  cursor: pointer;
+}
+
+.linkBtn2{
+  margin: 20px 0;
+  padding: 5px 10px;
+  background: #540B0E;
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+}
+
+.linkBtn2:hover{
+  background: rgba(84, 11, 13, 0.568);
 }

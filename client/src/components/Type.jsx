@@ -78,16 +78,16 @@ class Type extends Component {
     render() {
 
         return (
-            <div className="App">
+            <div className="mainContainer">
                 <div>
                     {/* <Link to='/'>Logout</Link> */}
                     {this.state.typeList.map((type) => {
                         return (
-                            <div key={type._id}>
-                                <div className="dbData">
-                                    <Link to={`/type/${type._id}`} >{type.name}</Link>
-                                    <button onClick={() => this.deleteType(type._id)} className="linkBtn">Delete</button>
-                                </div>
+                            <div key={type._id} className="typeData">
+
+                                <Link to={`/type/${type._id}`} className="typeName">{type.name}</Link>
+                                <button onClick={() => this.deleteType(type._id)} className="linkBtn">Delete</button>
+
                                 {/* <div>
                                     {this.state.updateForm ?
                                         <form onSubmit={() => this.updateType(type._id)}>
@@ -106,14 +106,14 @@ class Type extends Component {
                     })}
                 </div>
                 {/* <button onClick={this.toggleUpdateForm} className="linkBtn">Edit</button> */}
-                <button onClick={this.toggleCreateForm} className="linkBtn">Create New Type</button>
+                <button onClick={this.toggleCreateForm} className="createBtn">{this.state.createForm ? "-" : "+"}</button>
                 {this.state.createForm ?
                     <div>
                         <form onSubmit={() => this.createNewType()} id="createForm">
                             <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.type.name} />
                             <input type="text" name="imgUrl" placeholder="ImgUrl" onChange={this.handleChange} value={this.state.type.imgUrl} />
-                            <textarea name="description" onChange={this.handleChange} value={this.state.type.description}>Description</textarea>
-                            <button type="submit" className="linkBtn" >Create</button>
+                            <textarea name="description" placeholder="Description" onChange={this.handleChange} value={this.state.type.description}></textarea>
+                            <button type="submit" className="linkBtn2" >Create</button>
                         </form>
                     </div>
                     :

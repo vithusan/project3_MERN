@@ -11,7 +11,9 @@ class Brand extends Component {
             imgUrl: '',
             typeId: this.props.match.params.typeId
         },
-        brandList: []
+        brandList: [],
+        createForm: false
+
     }
 
     componentDidMount = () => {
@@ -47,41 +49,52 @@ class Brand extends Component {
         await this.refreshPage()
     }
 
-    updateType = (typeId) => {
-        // event.preventDefault()
-        axios.put(`/api/type/${typeId}`, {
-            name: this.state.type.name,
-            descript: this.state.type.description,
-            imgUrl: this.state.type.imgUrl
-        })
-            .then((res) => {
-                this.setState({ type: res.data, updateForm: false })
-            })
+    // updateType = (typeId) => {
+    //     // event.preventDefault()
+    //     axios.put(`/api/type/${typeId}`, {
+    //         name: this.state.type.name,
+    //         descript: this.state.type.description,
+    //         imgUrl: this.state.type.imgUrl
+    //     })
+    //         .then((res) => {
+    //             this.setState({ type: res.data, updateForm: false })
+    //         })
+    // }
+    toggleCreateForm = () => {
+        this.setState({ createForm: !this.state.createForm })
     }
 
     render() {
         return (
-            <div>
+            <div className="mainContainer">
+
+                <Link to='/type' className="linkBtn2">Back</Link>
+
                 {this.state.brandList.map((brand) => {
                     return (
-                        <div key={brand._id}>
-                            <Link to={`/brand/${brand._id}`} className="linkBtn">{brand.name}</Link>
-                            <img src={brand.imgUrl} alt="type of drones" />
-                            <button onClick={() => this.deleteBrand(brand._id)}>Delete</button>
+                        <div key={brand._id} className="typeData">
+                            <Link to={`/brand/${brand._id}`} className="typeName">{brand.name}</Link>
+                            {/* <img src={brand.imgUrl} alt="type of drones" /> */}
+                            <button onClick={() => this.deleteBrand(brand._id)} className="linkBtn">Delete</button>
                         </div>
                     )
                 })}
                 {/* why does the input need values  */}
-                <form onSubmit={() => this.createNewBrand()}>
-                    <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.brand.name} />
-                    <input type="text" name="imgUrl" placeholder="imgUrl" onChange={this.handleChange} value={this.state.brand.imgUrl} />
-                    {/* <input type="textarea" name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description} /> */}
-                    <textarea name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description}></textarea>
-                    {/* <input type="text" name="typeId" value={this.props.match.params.typeId} /> */}
-                    <button type="submit">Create</button>
-                </form>
+                <button onClick={this.toggleCreateForm} className="createBtn">{this.state.createForm ? "-" : "+"}</button>
+                {this.state.createForm ?
+                    <div>
+                        <form onSubmit={() => this.createNewBrand()}>
+                            <input type="text" name="name" placeholder="name" onChange={this.handleChange} value={this.state.brand.name} />
+                            <input type="text" name="imgUrl" placeholder="imgUrl" onChange={this.handleChange} value={this.state.brand.imgUrl} />
+                            {/* <input type="textarea" name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description} /> */}
+                            <textarea name="description" placeholder="description" onChange={this.handleChange} value={this.state.brand.description}></textarea>
+                            {/* <input type="text" name="typeId" value={this.props.match.params.typeId} /> */}
+                            <button type="submit" className="linkBtn2">Create</button>
+                        </form>
+                    </div>
+                    :
+                    null}
 
-                <Link to='/type' className="linkBtn">Back</Link>
             </div>
         );
     }
