@@ -17,16 +17,19 @@ class Home extends Component {
     }
     render() {
         return (
-            <div>
-                <div>
-                    {this.state.typeList.map((type) => {
-                        return (
-                            <div key={type._id}>
-                                <Link to={`/brandpage/${type._id}`}><img src={type.imgUrl} alt="type of drones" /></Link>
-                            </div>
-                        )
-                    })}
-                </div>
+            <div className="homeContainer">
+                {this.state.typeList.map((type) => {
+                    return (
+                        <div key={type._id} className="eachLink">
+                            <Link to={`/brandpage/${type._id}`} >
+
+                                <img src={type.imgUrl} alt="type of drones" className="typeImgLink" />
+                                {/* <div className="typeImgTitle">{type.name}</div> */}
+
+                            </Link>
+                        </div>
+                    )
+                })}
             </div>
         );
     }

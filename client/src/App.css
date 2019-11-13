@@ -14,6 +14,11 @@
   align-items: center;
 }
 
+.logo{
+  text-decoration: none;
+}
+
+
 .linkBtn{
   padding: 5px 10px;
   background: #540B0E;
@@ -33,16 +38,15 @@
   justify-content: space-between;
   align-items: center;
   background: #9E2A2B;
+  height: 100px;
 }
 
 h1{
   font-family: 'Big Shoulders Text', cursive;
-  font-size: 40px;
-  transform: skewX(15deg);
+  font-size: 35px;
   padding: 10px;
-  background: #fff;
-  color: #9E2A2B;
-  border-radius: 50%;
+  font-style: italic;
+  color: #fff;
   text-align: center;
   margin-left: 100px;
 }
@@ -65,3 +69,80 @@ input, textarea{
   margin-right: 100px;
 }
 
+.homeContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.eachLink{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.eachLink:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
+  transform: translate(0,-10px);
+
+}
+.typeImgLink{
+  width: 700px;
+  height: 250px;
+}
+
+.typeImgTitle{
+  width: 80%;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(0, 0, 0, 3));
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 40px;
+}
+
+.brandLink{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 350px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brandLink:hover, .itemLink:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.69);
+
+}
+
+.brandContainer{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.itemImgLink{
+  width: 300px;
+  height: 300px;
+}
+
+.itemLink{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+  color: rgb(87, 87, 87);
+}

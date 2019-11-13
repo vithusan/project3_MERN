@@ -16,11 +16,14 @@ class BrandPage extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="brandContainer">
                 {this.state.brandList.map((brand) => {
                     return (
-                        <div key={brand._id}>
-                            <Link to={`/itemlist/${brand._id}`} className="linkBtn">{brand.name}</Link>
+                        <div key={brand._id} >
+                            <Link to={`/itemlist/${brand._id}`} className="brandLink">
+                                <img src={brand.imgUrl} alt="drone brands" className="brandImgLink" />
+                                {/* <div className="brandTitle">{brand.name}</div> */}
+                            </Link>
                         </div>
                     )
                 })}

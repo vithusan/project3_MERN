@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 class ItemPage extends Component {
     state = {
@@ -24,7 +23,6 @@ class ItemPage extends Component {
                             <h1>{item.description}</h1>
                             <h1>{item.price}</h1>
                             <a href={item.buyLink}>Buy</a>
-                            {/* <Link to={item.buyLink}>Buy</Link> */}
                             <img src={item.imgUrl} alt="item" />
 
                         </div>

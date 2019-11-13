@@ -16,11 +16,20 @@ class ItemList extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="brandContainer">
                 {this.state.itemList.map((item) => {
                     return (
-                        <div key={item._id}>
-                            <Link to={`/itempage/${this.props.match.params.brandId}`}><h1>{item.name}</h1></Link>
+                        <div key={item._id} >
+                            {/* <Link to={`/itempage/${this.props.match.params.brandId}`} className="itemLink">
+                                <img src={item.imgUrl} alt="drone brands" className="itemImgLink" />
+                                <h2>{item.name}</h2>
+                                <h5>{item.price}</h5>
+                            </Link> */}
+                            <a href={item.buyLink} className="itemLink">
+                                <img src={item.imgUrl} alt="drone brands" className="itemImgLink" />
+                                <h2>{item.name}</h2>
+                                <h5>{item.price}</h5>
+                            </a>
                         </div>
                     )
                 })}

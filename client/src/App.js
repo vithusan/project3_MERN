@@ -22,7 +22,7 @@ class App extends React.Component {
       <div>
         <Router>
           <div className="topNav">
-            <h1>Fly</h1>
+            <Link to='/' className="logo"><h1>Fly</h1></Link>
             <div className="adminBtn">
               {this.state.toggleAdmin ?
                 <Link to='/' className="linkBtn" onClick={this.toggleAdmin}>Logout</Link>
