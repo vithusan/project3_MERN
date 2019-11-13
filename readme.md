@@ -12,4 +12,4 @@ This app targets the people who wants to get into drone hobby or even profession
 
 
 ## ERD Diagram
-!['Erd Diagram'](/image/project3_ERD.jpg)
+!['Erd Diagram'](client/src/image/project3_ERD.jpg)
