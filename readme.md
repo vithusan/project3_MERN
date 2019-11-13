@@ -7,5 +7,9 @@
 ## End User
 This app targets the people who wants to get into drone hobby or even professional filming. 
 
-!['Heroku App']('https://stormy-bastion-82943.herokuapp.com/')
+<a href="https://stormy-bastion-82943.herokuapp.com/">Heroku App</a>
+<a href="https://git.generalassemb.ly/vithusan/SEI24-PROJECT3/projects/1">Project Board</a>
+
+
 ## ERD Diagram
+!['Heroku App']('https://stormy-bastion-82943.herokuapp.com/')
